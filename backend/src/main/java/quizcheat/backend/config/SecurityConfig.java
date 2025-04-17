@@ -30,7 +30,7 @@ public class SecurityConfig {
                                                                                                               // dùng
                                                                                                               // session
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll() // Cho phép truy cập /api/auth/login
+                        .requestMatchers("/api/auth/**").permitAll() // Cho phép truy cập /api/auth/login
                         .anyRequest().authenticated() // Các yêu cầu khác cần xác thực
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Thêm JWT
