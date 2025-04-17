@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import quizcheat.backend.entity.User;
 import quizcheat.backend.repository.UserRepository;
-import quizcheat.backend.service.AuthService;
+import quizcheat.backend.service.interfaces.AuthService;
 
 @Service
 public class AuthServiceimpl implements AuthService {
@@ -46,8 +46,8 @@ public class AuthServiceimpl implements AuthService {
     }
 
     @Override
-    public String registerEmail(String email, String password, String checkpassword, String name) {
-        email = email.replace(" ", ""); // Loại bỏ tất cả dấu cách trong email
+    public String register(String email, String password, String checkpassword, String name) {
+        email = email.trim().toLowerCase();
         if (!isValidEmail(email)) {
             return "Invalid email format!";
         }
