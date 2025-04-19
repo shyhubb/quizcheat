@@ -1,7 +1,10 @@
 package quizcheat.backend.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -11,15 +14,18 @@ public class User {
     private String password;
     private String role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Point> points;
+
     public User() {
-        this.role = "USER";
+        this.role = "ROLE_USER";
     }
 
     public User(String email, String name, String acount, String password) {
         this.email = email;
         this.name = name;
         this.password = password;
-        this.role = "USER";
+        this.role = "ROLE_USER";
     }
 
     public String getEmail() {

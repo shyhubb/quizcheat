@@ -30,6 +30,7 @@ public class AuthController {
         if (status.equals("Login successful!")) {
             String role = authServiceimpl.findRoleByEmail(loginRequest.getEmail());
             String token = jwtTokenProvider.generateToken(loginRequest.getEmail(), role);
+            System.out.println("token: " + token);
             return new ResponseEntity<>(new StatusResponse(status, new LoginResponse(token)), HttpStatus.OK);
         }
         return new ResponseEntity<>(new StatusResponse(status, new LoginResponse()), HttpStatus.BAD_REQUEST);

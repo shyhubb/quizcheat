@@ -50,8 +50,9 @@ public class JwtTokenProvider {
     }
 
     public String getEmailByToken(String token) {
-        return Jwts.parser()
+        return Jwts.parserBuilder() // Sử dụng parserBuilder() thay cho parser()
                 .setSigningKey(secretKey)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
