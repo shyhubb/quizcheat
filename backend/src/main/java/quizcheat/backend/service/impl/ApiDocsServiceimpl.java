@@ -1,6 +1,8 @@
 package quizcheat.backend.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import quizcheat.backend.entity.ApiDocs;
@@ -25,6 +27,11 @@ public class ApiDocsServiceimpl implements ApiDocsService {
     @Override
     public boolean exitsByEndPoint(String api) {
         return apiDocsRepository.existsByEndpoint(api);
+    }
+
+    @Override
+    public Optional<ApiDocs> findById(Long id) {
+        return (Optional) apiDocsRepository.findById(id);
     }
 
 }
